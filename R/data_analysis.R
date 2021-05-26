@@ -63,6 +63,8 @@ avg_pAgainst_team_17_18 <- group_by(nba_data_season_17_18, Team) %>%
 
 ## Find the best defensive team per season
 
+
+
 ## Find best offensive team per season
 
 ## Graph on how the total defensive attributes (Rebounds, steals, TO, etc) are compared to other teams

@@ -79,9 +79,6 @@ all_seasons_avg_points_against <- rbind(avg_pAgainst_team_14_15, avg_pAgainst_te
   rbind(avg_pAgainst_team_17_18)
 
 
-ggplot(data = avg_per_team_17_18) +
-  geom_point(mapping = aes(x = Team, y = AvgTeam, size = AvgTeam))
-
 all_seasons_avg_points <- rbind(avg_per_team_14_15, avg_per_team_15_16) %>%
   rbind(avg_per_team_16_17) %>%
   rbind(avg_per_team_17_18)
@@ -94,14 +91,33 @@ all_seasons_avg_points <- rbind(avg_per_team_14_15, avg_per_team_15_16) %>%
 
 ## GSW 17-18 Best offense, SAS 15-16 Best Defense in our span
 GSW_offensive_att <- filter(nba_data_season_17_18, Team == "GSW") %>%
-  select(Team, FieldGoals, FieldGoalsAttempted, FieldGoals., X3PointShots, X3PointShotsAttempted, X3PointShots., FreeThrows., OffRebounds, Assists, Turnovers, Opp.TotalFouls)
+  select(Team, FieldGoals, FieldGoalsAttempted, FieldGoals., X3PointShots, X3PointShotsAttempted, X3PointShots., FreeThrows., OffRebounds, Assists, Turnovers, Opp.TotalFouls) %>%
+  group_by(Team) %>%
+  summarise(FieldGoals. = mean(FieldGoals.), X3PointShots. = mean(X3PointShots.), FreeThrows. = mean(FreeThrows.), OffRebounds = mean(OffRebounds), Assists = mean(Assists), Turnovers = mean(Turnovers), Opp.TotalFouls = mean(Opp.TotalFouls)  )
+
 
 SAS_defensive_att <- filter(nba_data_season_15_16, Team == 'SAS') %>%
   select(Team, Steals, Blocks, TotalFouls, TotalRebounds, OffRebounds, Opp.FieldGoals., Opp.3PointShots., Opp.FreeThrowsAttempted, Opp.Turnovers) %>%
   group_by(Team) %>%
   summarise(StealsAvg = mean(Steals), BlocksAvg = mean(Blocks), TotalFoulsAvg = mean(TotalFouls), DefensiveRebounds = mean(TotalRebounds - OffRebounds) ,OppFieldGoalsAvg = mean(Opp.FieldGoals.), Opp3PointShotsAvg = mean(Opp.3PointShots.), OppFreeThrowsAttAvg = mean(Opp.FreeThrowsAttempted), OppTurnoversAvg = mean(Opp.Turnovers))
 
+nba_data_season <- mutate(nba_data_season, DefensiveRebounds = (TotalRebounds - OffRebounds))
 
+ggplot(data = nba_data_season) +
+  geom_bar(mapping = aes( x = FieldGoals.))
+
+ggplot(data = nba_data_season) +
+  geom_bar(mapping = aes(x = DefensiveRebounds))
+
+
+## Buckets for rebounds giving higher value to rebounds
+nba_data_plus_minus <- mutate(nba_data_season, DefensiveReboundsCategory = case_when(
+  DefensiveRebounds >= 45  ~ 4,
+  DefensiveRebounds > 35 ~ 2,
+  DefensiveRebounds >= 30 ~ 0,
+  DefensiveRebounds > 25 ~ -1,
+  TRUE ~ -2
+))
 
   
 

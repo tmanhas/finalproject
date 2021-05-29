@@ -103,12 +103,41 @@ SAS_defensive_att <- filter(nba_data_season_15_16, Team == 'SAS') %>%
 
 nba_data_season <- mutate(nba_data_season, DefensiveRebounds = (TotalRebounds - OffRebounds))
 
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+##                                                                                     ##
+## This is the Data Science section in which we are going to group different values in ##
+## buckets of information to make the NovelPlusMinusI1 statistic                       ##
+##                                                                                     ##
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+
+
+## See the distribution to create buckets of information
 ggplot(data = nba_data_season) +
   geom_bar(mapping = aes( x = FieldGoals.))
 
+## See the distribution to create buckets of information
 ggplot(data = nba_data_season) +
   geom_bar(mapping = aes(x = DefensiveRebounds))
 
+## See the distribution to create buckets of information
+ggplot(data = nba_data_season) +
+  geom_bar(mapping = aes(x = OffRebounds))
+
+## See the distribution to create buckets of information
+ggplot(data = nba_data_season) +
+  geom_bar(mapping = aes(x = Blocks))
+
+## See the distribution to create buckets of information
+ggplot(data = nba_data_season) +
+  geom_bar(mapping = aes(x = Steals))
+
+## See the distribution to create buckets of information
+ggplot(data = nba_data_season) +
+  geom_bar(mapping = aes(x = Turnovers))
+
+## See the distribution to create buckets of information
+ggplot(data = nba_data_season) +
+  geom_bar(mapping = aes(x = Opp.FieldGoals.)) 
 
 ## Buckets for rebounds giving higher value to rebounds
 nba_data_plus_minus <- mutate(nba_data_season, DefensiveReboundsCategory = case_when(
@@ -119,9 +148,56 @@ nba_data_plus_minus <- mutate(nba_data_season, DefensiveReboundsCategory = case_
   TRUE ~ -2
 ))
 
-  
+nba_data_plus_minus <- mutate(nba_data_plus_minus, OffReboundsCategory = case_when(
+  OffRebounds >= 20 ~ 2,
+  OffRebounds > 12 ~ 1, 
+  OffRebounds > 7 ~ 0,
+  OffRebounds > 5 ~ -1,
+  TRUE ~ -2
+))
 
-## Find best offensive team per season
+nba_data_plus_minus <- mutate(nba_data_plus_minus, BlocksCategory = case_when(
+  Blocks >= 12 ~ 2,
+  Blocks > 6 ~ 1,
+  Blocks > 3 ~ 0,
+  TRUE ~ -1
+))
+
+nba_data_plus_minus <- mutate(nba_data_plus_minus, StealsCategory = case_when(
+  Steals >= 16 ~ 2.5,
+  Steals > 13 ~ 2,
+  Steals > 10 ~ 1,
+  Steals > 7 ~ 0,
+  Steals > 5 ~ -.5, 
+  Steals > 3 ~ -1,
+  TRUE ~ -2
+))
+
+
+
+
+
+## DefensiveIstat creation --> DefRebounds + steals + blocks - (5 * Opp.FieldGoals)
+
+nba_inPlusMinStat <- mutate(nba_data_plus_minus, Defensive_i_stat = ((StealsCategory + DefensiveReboundsCategory + BlocksCategory) - (5 * Opp.FieldGoals.)))
+
+ggplot(data = nba_inPlusMinStat) +
+  geom_point(mapping = aes(x = Team, y = Defensive_i_stat)) 
+
+## OffensiveIstat creation --> FieldGoals. * 10 + rebounds - TO/3
+
+nba_inPlusMinStat <- mutate(nba_inPlusMinStat, Offensive_i_stat = ((20 * FieldGoals. + OffReboundsCategory) - (Turnovers / 3)))
+
+nba_inPlusMinStat <- select(nba_inPlusMinStat, Team, SeasonYear, Defensive_i_stat, Offensive_i_stat)
+
+nba_inPlusMinStat <- mutate(nba_inPlusMinStat , NovelPlusMinusI1 = (Offensive_i_stat + Defensive_i_stat))
+
+## Find the real best offensive team per season
+
+
+
+
+
 
 ## Graph on how the total defensive attributes (Rebounds, steals, TO, etc) are compared to other teams
 ## This will answer our hypothesis of being a defensive team makes you win the championship

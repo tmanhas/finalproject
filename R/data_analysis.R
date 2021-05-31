@@ -111,6 +111,7 @@ nba_data_season <- mutate(nba_data_season, DefensiveRebounds = (TotalRebounds - 
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
 
 
+
 ## See the distribution to create buckets of information
 ggplot(data = nba_data_season) +
   geom_bar(mapping = aes( x = FieldGoals.))
@@ -175,8 +176,6 @@ nba_data_plus_minus <- mutate(nba_data_plus_minus, StealsCategory = case_when(
 
 
 
-
-
 ## DefensiveIstat creation --> DefRebounds + steals + blocks - (5 * Opp.FieldGoals)
 
 nba_inPlusMinStat <- mutate(nba_data_plus_minus, Defensive_i_stat = ((StealsCategory + DefensiveReboundsCategory + BlocksCategory) - (5 * Opp.FieldGoals.)))
@@ -192,10 +191,13 @@ nba_inPlusMinStat <- select(nba_inPlusMinStat, Team, SeasonYear, Defensive_i_sta
 
 nba_inPlusMinStat <- mutate(nba_inPlusMinStat , NovelPlusMinusI1 = (Offensive_i_stat + Defensive_i_stat))
 
+
+
 ## Find the real best offensive team per season
 
 
-
+team_ranks_14_18 <- group_by(nba_inPlusMinStat, Team) %>%
+  summarise(mean(NovelPlusMinusI1))
 
 
 
@@ -203,3 +205,5 @@ nba_inPlusMinStat <- mutate(nba_inPlusMinStat , NovelPlusMinusI1 = (Offensive_i_
 ## This will answer our hypothesis of being a defensive team makes you win the championship
 ## If hypothesis is correct, graph other attributes
 ## If hypothesis is incorrect, look for other clues on what makes a champion
+
+## For final plot you have to group by season then by team and then display data.

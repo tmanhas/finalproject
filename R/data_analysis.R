@@ -68,8 +68,6 @@ avg_pAgainst_team_17_18 <- group_by(nba_data_season_17_18, Team) %>%
 
 
 ## Find the best defensive team per season
-
-
 ggplot(data = avg_pAgainst_team_17_18) +
   geom_point(mapping = aes(x = Team, y = AvgAgainstTeam, size = AvgAgainstTeam))
 
@@ -103,8 +101,10 @@ SAS_defensive_att <- filter(nba_data_season_15_16, Team == 'SAS') %>%
 
 nba_data_season <- mutate(nba_data_season, DefensiveRebounds = (TotalRebounds - OffRebounds))
 
+
+
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-##                                                                                     ##
+## Data Science                                                                        ##
 ## This is the Data Science section in which we are going to group different values in ##
 ## buckets of information to make the NovelPlusMinusI1 statistic                       ##
 ##                                                                                     ##
@@ -141,6 +141,7 @@ ggplot(data = nba_data_season) +
   geom_bar(mapping = aes(x = Opp.FieldGoals.)) 
 
 ## Buckets for rebounds giving higher value to rebounds
+## By using case statements we gave weight to different categpories where we weighted more the off and def rebounds.
 nba_data_plus_minus <- mutate(nba_data_season, DefensiveReboundsCategory = case_when(
   DefensiveRebounds >= 45  ~ 4,
   DefensiveRebounds > 35 ~ 2,
@@ -175,6 +176,10 @@ nba_data_plus_minus <- mutate(nba_data_plus_minus, StealsCategory = case_when(
 ))
 
 
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+## Check this for interactive data vis                      ##
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+
 
 ## DefensiveIstat creation --> DefRebounds + steals + blocks - (5 * Opp.FieldGoals)
 
@@ -201,9 +206,11 @@ team_ranks_14_18 <- group_by(nba_inPlusMinStat, Team) %>%
 
 
 
-## Graph on how the total defensive attributes (Rebounds, steals, TO, etc) are compared to other teams
+## Graph on how the total defensive attributes are compared to other teams
 ## This will answer our hypothesis of being a defensive team makes you win the championship
 ## If hypothesis is correct, graph other attributes
+
 ## If hypothesis is incorrect, look for other clues on what makes a champion
+
 
 ## For final plot you have to group by season then by team and then display data.

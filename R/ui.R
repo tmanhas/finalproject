@@ -9,13 +9,20 @@ fluidPage(theme = shinytheme("superhero"),
           p("We made an exploratory analysis to see the ditribution of the data in order to 
             give weights to the Teams for the creation of our novel statistic of plus minus"),
           br(),
-          mainPanel(
-            tabsetPanel(type = "tabs",
+          tabsetPanel(type = "tabs",
                         tabPanel("Tab 1"),
                         tabPanel("Tab 2"),
-                        tabPanel("Tab 3"))
-          )
-          
+                        tabPanel(
+                          "All NBA Data",
+                          sidebarLayout(
+                            sidebarPanel(
+                              textOutput("description")
+                            ),
+                          mainPanel(
+                            dataTableOutput("allnba")
+                          )
+                          )
+                          )),
+            )
           
           ##Graphs from data analysis --> these go inside the tabs, rename appropriately 
-)

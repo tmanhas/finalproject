@@ -10,8 +10,18 @@ fluidPage(theme = shinytheme("superhero"),
             give weights to the Teams for the creation of our novel statistic of plus minus"),
           br(),
           tabsetPanel(type = "tabs",
-                        tabPanel("Tab 1"),
-                        tabPanel("Tab 2"),
+                        tabPanel("Defense",
+                                 h2("Defensive Stats"), 
+                          sidebarLayout(
+                            sidebarPanel(
+                              checkboxGroupInput(inputId = "teams", label = "Select teams to view",
+                                                 choices = unique(nba_data$Team))
+                            ),
+                            mainPanel(
+                              plotOutput("table")
+                            )
+                          )),
+                        tabPanel("Offense"),
                         tabPanel(
                           "All NBA Data",
                           sidebarLayout(

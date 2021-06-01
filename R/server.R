@@ -5,10 +5,21 @@ library("maps")
 library("ggplot2")
 
 function(input, output) {
-  output$teams <- renderUI(
-    selectInput(inputId = "Team", label = "Choose team to view", choices = unique(nba_data$Team))
-  )
-  
+  output$teams <- renderUI({
+    checkboxGroupInput(inputId = "Teams")
+  })
+  react_avg_pAgainst_team_17_18 <- reactive({
+    if (is.null(input$teams)) {
+      avg_pAgainst_team_17_18
+    } else {
+      avg_pAgainst_team_17_18 %>% 
+        filter(Team %in% input$teams)
+    }
+  })
+  output$table <- renderPlot({
+    ggplot(data = react_avg_pAgainst_team_17_18()) +
+      geom_point(mapping = aes(x = Team, y = AvgAgainstTeam, size = AvgAgainstTeam))
+  })
   output$allnba <- renderDataTable({
     nba_data
   })

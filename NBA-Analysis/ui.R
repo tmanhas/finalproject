@@ -2,9 +2,18 @@
 
 library("shiny")
 library("shinythemes")
+source("data_analysis.R")
 
 fluidPage(theme = shinytheme("superhero"),
-          h1("Data Analysis in NBA Teams"),
+          fluidRow(
+            
+            column(8,
+                   h1("Data Analysis in NBA Teams"),
+            ),
+            column(4,
+                   img(src = "nba_logo.jpeg", height = 100, width = "auto")
+            )
+          ),
           ## Introduction before
           p("We made an exploratory analysis to see the ditribution of the data in order to 
             give weights to the Teams for the creation of our novel statistic of plus minus"),
@@ -41,7 +50,7 @@ fluidPage(theme = shinytheme("superhero"),
                           )),
                         tabPanel("Offensive Statistics",
                                 h2("Offensive Stats"),
-                                p("This page looks at an important stat when determining the best offensive team,
+                                p("This page looks at an important statistic when determining the best offensive team,
                                    average points scored per game. This is an indication of how strong a team is on the court.
                                    It can be concluded that a team with the highest average is the 
                                    strongest offensive team."),
@@ -65,12 +74,14 @@ fluidPage(theme = shinytheme("superhero"),
                                      dataTableOutput("all_seasons_avg_points")
                                    )
                                  )),
-                        tabPanel("Best/Worst Teams",
-                                 h2("Best/Worst Teams in the NBA"),
-                                 p("We created a data statstic to assign different points based on a teams
-                                   success in a certain recorded stastics to determine the best and worst NBA teams."),
-                                 h2("Best Offensive Team"),
-                                 h2("Best Defensive Team")),
+                        # tabPanel("Best/Worst Teams",
+                        #          h2("Best/Worst Teams in the NBA"),
+                        #          p("We created a data statistic to assign different points based on a teams
+                        #            success in a certain recorded stastics to determine the best and worst NBA teams."),
+                        #          h2("Best Offensive Team"),
+                        #          h2("Best Defensive Team")),
+                        #          
+                        # 
                         tabPanel(
                           "All NBA Data",
                           sidebarLayout(
@@ -86,4 +97,4 @@ fluidPage(theme = shinytheme("superhero"),
                           )),
             )
           
-          ##Graphs from data analysis --> these go inside the tabs, rename appropriately 
+ 

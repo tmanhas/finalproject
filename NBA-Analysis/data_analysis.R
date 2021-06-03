@@ -250,6 +250,7 @@ nba_PlusMin_17_18 <- group_by(nba_PlusMin_17_18, Team) %>%
 
 ggplot(nba_PlusMin_14_15) +
   geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
+  coord_flip() +
   labs(
     title = "Average Novel Statistic For Each Team, 2014-2015 Season",
     x = "Team",
@@ -259,6 +260,7 @@ ggplot(nba_PlusMin_14_15) +
 
 ggplot(nba_PlusMin_15_16) +
   geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
+  coord_flip() +
   labs(
     title = "Average Novel Statistic For Each Team, 2015-2016 Season",
     x = "Team",
@@ -268,6 +270,7 @@ ggplot(nba_PlusMin_15_16) +
 
 ggplot(nba_PLusMin_16_17) +
   geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
+  coord_flip() +
   labs(
     title = "Average Novel Statistic For Each Team, 2016-2017 Season",
     x = "Team",
@@ -277,6 +280,7 @@ ggplot(nba_PLusMin_16_17) +
 
 ggplot(nba_PlusMin_17_18) +
   geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
+  coord_flip() +
   labs(
     title = "Average Novel Statistic For Each Team, 2017-2018 Season",
     x = "Team",

@@ -214,3 +214,72 @@ team_ranks_14_18 <- group_by(nba_inPlusMinStat, Team) %>%
 
 
 ## For final plot you have to group by season then by team and then display data.
+
+## Filter by season
+
+nba_PlusMin_filtered <- select(nba_inPlusMinStat, Team, SeasonYear, NovelPlusMinusI1)
+
+nba_PlusMin_14_15 <- filter(nba_PlusMin_filtered, SeasonYear <= "2015-04-15" )
+
+nba_PlusMin_15_16 <- filter(nba_PlusMin_filtered, SeasonYear <= "2016-06-19") %>%
+  filter(SeasonYear > "2015-04-15")
+
+nba_PLusMin_16_17 <- filter(nba_PlusMin_filtered, SeasonYear <= "2017-06-19") %>%
+  filter(SeasonYear > "2016-06-19")
+
+nba_PlusMin_17_18 <- filter(nba_PlusMin_filtered, SeasonYear <= "2018-06-19") %>%
+  filter(SeasonYear > "2017-06-19")
+
+
+## Calculate average novel statistic for each team
+
+nba_PlusMin_14_15 <- group_by(nba_PlusMin_14_15, Team) %>%
+  summarise(AvgNovelStat = mean(NovelPlusMinusI1))
+
+nba_PlusMin_15_16 <- group_by(nba_PlusMin_15_16, Team) %>%
+  summarise(AvgNovelStat = mean(NovelPlusMinusI1))
+
+nba_PLusMin_16_17 <- group_by(nba_PLusMin_16_17, Team) %>%
+  summarise(AvgNovelStat = mean(NovelPlusMinusI1))
+
+nba_PlusMin_17_18 <- group_by(nba_PlusMin_17_18, Team) %>%
+  summarise(AvgNovelStat = mean(NovelPlusMinusI1))
+
+
+## Create the 4 plots, one for each season
+
+ggplot(nba_PlusMin_14_15) +
+  geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
+  labs(
+    title = "Average Novel Statistic For Each Team, 2014-2015 Season",
+    x = "Team",
+    y = "Mean Novel Statistic"
+  )
+
+
+ggplot(nba_PlusMin_15_16) +
+  geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
+  labs(
+    title = "Average Novel Statistic For Each Team, 2015-2016 Season",
+    x = "Team",
+    y = "Mean Novel Statistic"
+  )
+
+
+ggplot(nba_PLusMin_16_17) +
+  geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
+  labs(
+    title = "Average Novel Statistic For Each Team, 2016-2017 Season",
+    x = "Team",
+    y = "Mean Novel Statistic"
+  )
+
+
+ggplot(nba_PlusMin_17_18) +
+  geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
+  labs(
+    title = "Average Novel Statistic For Each Team, 2017-2018 Season",
+    x = "Team",
+    y = "Mean Novel Statistic"
+  )
+  

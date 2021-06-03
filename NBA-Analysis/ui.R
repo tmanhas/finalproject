@@ -45,7 +45,14 @@ fluidPage(theme = shinytheme("superhero"),
                                                         choices = unique(nba_data$Team))
                                    ),
                                    mainPanel(
-                                     plotOutput("table5")
+                                     plotOutput("table5"),
+                                     br(),
+                                     plotOutput("table6"),
+                                     br(),
+                                     plotOutput("table7"),
+                                     br(),
+                                     plotOutput("table8"),
+                                     br()
                                    )
                                  )),
                         tabPanel("Best/Worst Teams",

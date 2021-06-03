@@ -86,7 +86,48 @@ shinyServer(function(input, output) {
       labs(title = "Offense - Average Points Scored per Game in '14-15 Season", 
            x = "Team(s)", y = "Average Points Scored")
   })
-  
+  react_avg_per_team_15_16 <- reactive({
+    if (is.null(input$teamso)) {
+      avg_per_team_15_16
+    } else {
+      avg_per_team_15_16 %>% 
+        filter(Team %in% input$teamso)
+    }
+  })
+  output$table6 <- renderPlot({
+    ggplot(data = react_avg_per_team_15_16()) +
+      geom_point(mapping = aes(x = Team, y = AvgTeam, size = AvgTeam)) +
+      labs(title = "Offense - Average Points Scored per Game in '15-16 Season", 
+           x = "Team(s)", y = "Average Points Scored")
+  })
+  react_avg_per_team_16_17 <- reactive({
+    if (is.null(input$teamso)) {
+      avg_per_team_16_17
+    } else {
+      avg_per_team_16_17 %>% 
+        filter(Team %in% input$teamso)
+    }
+  })
+  output$table7 <- renderPlot({
+    ggplot(data = react_avg_per_team_16_17()) +
+      geom_point(mapping = aes(x = Team, y = AvgTeam, size = AvgTeam)) +
+      labs(title = "Offense - Average Points Scored per Game in '16-17 Season", 
+           x = "Team(s)", y = "Average Points Scored")
+  })
+  react_avg_per_team_17_18 <- reactive({
+    if (is.null(input$teamso)) {
+      avg_per_team_17_18
+    } else {
+      avg_per_team_17_18 %>% 
+        filter(Team %in% input$teamso)
+    }
+  })
+  output$table8 <- renderPlot({
+    ggplot(data = react_avg_per_team_17_18()) +
+      geom_point(mapping = aes(x = Team, y = AvgTeam, size = AvgTeam)) +
+      labs(title = "Offense - Average Points Scored per Game in '17-18 Season", 
+           x = "Team(s)", y = "Average Points Scored")
+  })
   
 #all data graphs
   output$allnba <- renderDataTable({

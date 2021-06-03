@@ -13,7 +13,11 @@ fluidPage(theme = shinytheme("superhero"),
                       tabPanel("Introduction",
                                h2("Introduction to Webpage")),
                       tabPanel("Defensive Statistics",
-                                 h2("Defensive Stats"), 
+                              h2("Defensive Stats"),
+                              p("This page looks at a key defensive stat, points scored by opponent.
+                                 The below graphs display the average amount of points scored against a team
+                                 in a given season. It can be concluded that lower the average amount of points 
+                                 allowed, the stronger the team is defensively."),
                           sidebarLayout(
                             sidebarPanel(
                               checkboxGroupInput(inputId = "teams", label = "Select teams to compare",
@@ -35,7 +39,9 @@ fluidPage(theme = shinytheme("superhero"),
                           "All NBA Data",
                           sidebarLayout(
                             sidebarPanel(
-                              textOutput("description")
+                              p("This data table is the raw data that we used for our analysis of teams. 
+                                Feel free to click through using the filters above or below the table to narrow you search.
+                                Slide left and right to see all the different stats tracked.")
                             ),
                           mainPanel(
                             dataTableOutput("allnba")

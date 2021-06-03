@@ -2,7 +2,7 @@
 
 **Team Members:Ananya Mishra, Matthew Cagle, Tara Manhas and Roberto Infante**
 
-![NBA](nba_logo.jpeg)
+![NBA](NBA-Analysis/www/nba_logo.jpeg)
 
 
 Our final project is based on NBA games, mainly focused on every game played between the time period 2014-2018.

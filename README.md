@@ -4,8 +4,6 @@
 
 ![NBA](NBA-Analysis/www/nba_logo.jpeg)
 
-<img src="nba_logo.jpeg" alt="NBA" width="200"/>
-
 
 ## Overview
 Our final project is based on NBA games, mainly focused on every game played between the time period 2014-2018.

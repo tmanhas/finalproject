@@ -12,11 +12,11 @@ shinyServer(function(input, output) {
   
 #defense reactive graphs
   react_avg_pAgainst_team_14_15 <- reactive({
-    if (is.null(input$teams)) {
+    if (is.null(input$teamsd)) {
       avg_pAgainst_team_14_15
     } else {
       avg_pAgainst_team_14_15 %>% 
-        filter(Team %in% input$teams)
+        filter(Team %in% input$teamsd)
     }
   })
   output$table1 <- renderPlot({
@@ -26,11 +26,11 @@ shinyServer(function(input, output) {
            x = "Team(s)", y = "Average Points Scored Against")
   })
   react_avg_pAgainst_team_15_16 <- reactive({
-    if (is.null(input$teams)) {
+    if (is.null(input$teamsd)) {
       avg_pAgainst_team_15_16
     } else {
       avg_pAgainst_team_15_16 %>% 
-        filter(Team %in% input$teams)
+        filter(Team %in% input$teamsd)
     }
   })
   output$table2 <- renderPlot({
@@ -40,11 +40,11 @@ shinyServer(function(input, output) {
            x = "Team(s)", y = "Average Points Scored Against")
   })
   react_avg_pAgainst_team_16_17 <- reactive({
-    if (is.null(input$teams)) {
+    if (is.null(input$teamsd)) {
       avg_pAgainst_team_16_17
     } else {
       avg_pAgainst_team_16_17 %>% 
-        filter(Team %in% input$teams)
+        filter(Team %in% input$teamsd)
     }
   })
   output$table3 <- renderPlot({
@@ -54,11 +54,11 @@ shinyServer(function(input, output) {
            x = "Team(s)", y = "Average Points Scored Against")
   })
   react_avg_pAgainst_team_17_18 <- reactive({
-    if (is.null(input$teams)) {
+    if (is.null(input$teamsd)) {
       avg_pAgainst_team_17_18
     } else {
       avg_pAgainst_team_17_18 %>% 
-        filter(Team %in% input$teams)
+        filter(Team %in% input$teamsd)
     }
   })
   output$table4 <- renderPlot({
@@ -67,8 +67,34 @@ shinyServer(function(input, output) {
       labs(title = "Defense - Average Points Allowed per Game in '17-18 Season", 
            x = "Team(s)", y = "Average Points Scored Against")
   })
+  output$all_seasons_avg_points_against <- renderDataTable({
+    all_seasons_avg_points_against
+  })
+
+#offensive graphs
+  react_avg_per_team_14_15 <- reactive({
+    if (is.null(input$teamso)) {
+      avg_per_team_14_15
+    } else {
+      avg_per_team_14_15 %>% 
+        filter(Team %in% input$teamso)
+    }
+  })
+  output$table5 <- renderPlot({
+    ggplot(data = react_avg_per_team_14_15()) +
+      geom_point(mapping = aes(x = Team, y = AvgTeam, size = AvgTeam)) +
+      labs(title = "Offense - Average Points Scored per Game in '14-15 Season", 
+           x = "Team(s)", y = "Average Points Scored")
+  })
+  
+  
+#all data graphs
   output$allnba <- renderDataTable({
     nba_data
+  })
+  output$test <- renderPlot({
+    ggplot(data = nba_inPlusMinStat) +
+      geom_point(mapping = aes(x = Team, y = Defensive_i_stat)) 
   })
 
 })

@@ -10,6 +10,48 @@ shinyServer(function(input, output) {
   output$teams <- renderUI({
     checkboxGroupInput(inputId = "Teams")
   })
+  react_avg_pAgainst_team_14_15 <- reactive({
+    if (is.null(input$teams)) {
+      avg_pAgainst_team_14_15
+    } else {
+      avg_pAgainst_team_14_15 %>% 
+        filter(Team %in% input$teams)
+    }
+  })
+  output$table1 <- renderPlot({
+    ggplot(data = react_avg_pAgainst_team_14_15()) +
+      geom_point(mapping = aes(x = Team, y = AvgAgainstTeam, size = AvgAgainstTeam)) +
+      labs(title = "Defense - Average Points Allowed per Game in '14-15 Season", 
+           x = "Team(s)", y = "Average Points Scored Against")
+  })
+  react_avg_pAgainst_team_15_16 <- reactive({
+    if (is.null(input$teams)) {
+      avg_pAgainst_team_15_16
+    } else {
+      avg_pAgainst_team_15_16 %>% 
+        filter(Team %in% input$teams)
+    }
+  })
+  output$table2 <- renderPlot({
+    ggplot(data = react_avg_pAgainst_team_15_16()) +
+      geom_point(mapping = aes(x = Team, y = AvgAgainstTeam, size = AvgAgainstTeam)) +
+      labs(title = "Defense - Average Points Allowed per Game in '15-16 Season", 
+           x = "Team(s)", y = "Average Points Scored Against")
+  })
+  react_avg_pAgainst_team_16_17 <- reactive({
+    if (is.null(input$teams)) {
+      avg_pAgainst_team_16_17
+    } else {
+      avg_pAgainst_team_16_17 %>% 
+        filter(Team %in% input$teams)
+    }
+  })
+  output$table3 <- renderPlot({
+    ggplot(data = react_avg_pAgainst_team_16_17()) +
+      geom_point(mapping = aes(x = Team, y = AvgAgainstTeam, size = AvgAgainstTeam)) +
+      labs(title = "Defense - Average Points Allowed per Game in '16-17 Season", 
+           x = "Team(s)", y = "Average Points Scored Against")
+  })
   react_avg_pAgainst_team_17_18 <- reactive({
     if (is.null(input$teams)) {
       avg_pAgainst_team_17_18
@@ -18,9 +60,11 @@ shinyServer(function(input, output) {
         filter(Team %in% input$teams)
     }
   })
-  output$table <- renderPlot({
+  output$table4 <- renderPlot({
     ggplot(data = react_avg_pAgainst_team_17_18()) +
-      geom_point(mapping = aes(x = Team, y = AvgAgainstTeam, size = AvgAgainstTeam))
+      geom_point(mapping = aes(x = Team, y = AvgAgainstTeam, size = AvgAgainstTeam)) +
+      labs(title = "Defense - Average Points Allowed per Game in '17-18 Season", 
+           x = "Team(s)", y = "Average Points Scored Against")
   })
   output$allnba <- renderDataTable({
     nba_data

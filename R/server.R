@@ -4,7 +4,9 @@ library("tidyverse")
 library("maps")
 library("ggplot2")
 
-function(input, output) {
+nba_data <- read.csv("nba_games_stats.csv")
+
+shinyServer(function(input, output) {
   output$teams <- renderUI({
     checkboxGroupInput(inputId = "Teams")
   })
@@ -29,4 +31,4 @@ function(input, output) {
           Slide left and right to see all the different stats tracked.")
   })
   
-}
+})

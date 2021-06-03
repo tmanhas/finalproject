@@ -20,7 +20,7 @@ fluidPage(theme = shinytheme("superhero"),
                                  in a given season. It can be concluded that lower the average amount of points 
                                  allowed, the stronger the team is defensively."),
                           sidebarLayout(
-                            sidebarPanel(
+                              sidebarPanel(
                               checkboxGroupInput(inputId = "teamsd", label = "Select teams to compare",
                                                  choices = unique(nba_data$Team))
                             ),
@@ -32,6 +32,7 @@ fluidPage(theme = shinytheme("superhero"),
                               plotOutput("table3"),
                               br(),
                               plotOutput("table4"),
+                              br(),
                               h2("All seasons data table below:"),
                               p("From this, it is clear that SAS during the '15-16 season was the 
                                 strongest defensively as the gave up the least amount of points."),
@@ -39,12 +40,17 @@ fluidPage(theme = shinytheme("superhero"),
                             )
                           )),
                         tabPanel("Offensive Statistics",
-                                 sidebarLayout(
-                                   sidebarPanel(
+                                h2("Offensive Stats"),
+                                p("This page looks at an important stat when determining the best offensive team,
+                                   average points scored per game. This is an indication of how strong a team is on the court.
+                                   It can be concluded that a team with the highest average is the 
+                                   strongest offensive team."),
+                                sidebarLayout(
+                                    sidebarPanel(
                                      checkboxGroupInput(inputId = "teamso", label = "Select teams to compare",
                                                         choices = unique(nba_data$Team))
                                    ),
-                                   mainPanel(
+                                  mainPanel(
                                      plotOutput("table5"),
                                      br(),
                                      plotOutput("table6"),
@@ -52,7 +58,11 @@ fluidPage(theme = shinytheme("superhero"),
                                      plotOutput("table7"),
                                      br(),
                                      plotOutput("table8"),
-                                     br()
+                                     br(),
+                                     h2("All seasons data table below:"),
+                                     p("From this data, it can concluded that the strongest offensive team was GSW during the 'BLANK'16-17 season
+                                       as that team had the highest average points scored per game,"),
+                                     dataTableOutput("all_seasons_avg_points")
                                    )
                                  )),
                         tabPanel("Best/Worst Teams",

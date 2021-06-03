@@ -128,6 +128,9 @@ shinyServer(function(input, output) {
       labs(title = "Offense - Average Points Scored per Game in '17-18 Season", 
            x = "Team(s)", y = "Average Points Scored")
   })
+  output$all_seasons_avg_points <- renderDataTable({
+    all_seasons_avg_points
+  })
   
 #all data graphs
   output$allnba <- renderDataTable({

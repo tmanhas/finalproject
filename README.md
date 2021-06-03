@@ -2,8 +2,9 @@
 
 **Team Members:Ananya Mishra, Matthew Cagle, Tara Manhas and Roberto Infante**
 
-![NBA](NBA-Analysis/www/nba_logo.jpeg = 100x50)
-<img src = "nba_logo.jpeg", height = "300" | >
+![NBA](NBA-Analysis/www/nba_logo.jpeg)
+
+<img src="nba_logo.jpeg" alt="NBA" width="200"/>
 
 
 ## Overview

@@ -1,6 +1,7 @@
 # NBA Analysis
 
-**Team Members:Ananya Mishra, Matthew Cagle, Tara Manhas and Roberto Infante**
+**Team Members:** 
+**Ananya Mishra, Matthew Cagle, Tara Manhas and Roberto Infante**
 
 ![NBA](NBA-Analysis/www/nba_logo.jpeg)
 

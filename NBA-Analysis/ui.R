@@ -20,8 +20,8 @@ fluidPage(theme = shinytheme("superhero"),
           br(),
           tabsetPanel(type = "tabs",
                       tabPanel("Introduction",
-                               h2("Introduction to Webpage"),
-                               plotOutput("test")),
+                               h2("Introduction"),
+                               ),
                       tabPanel("Defensive Statistics",
                               h2("Defensive Stats"),
                               p("This page looks at a key defensive stat, points scored by opponent.
@@ -74,27 +74,6 @@ fluidPage(theme = shinytheme("superhero"),
                                      dataTableOutput("all_seasons_avg_points")
                                    )
                                  )),
-                        # tabPanel("Best/Worst Teams",
-                        #          h2("Best/Worst Teams in the NBA"),
-                        #          p("We created a data statistic to assign different points based on a teams
-                        #            success in a certain recorded stastics to determine the best and worst NBA teams."),
-                        #          h2("Best Offensive Team"),
-                        #          h2("Best Defensive Team")),
-                        #          
-                        # 
-                        tabPanel(
-                          "All NBA Data",
-                          sidebarLayout(
-                            sidebarPanel(
-                              p("This data table is the raw data that we used for our analysis of teams. 
-                                Feel free to click through using the filters above or below the table to narrow you search.
-                                Slide left and right to see all the different stats tracked.")
-                            ),
-                          mainPanel(
-                            dataTableOutput("allnba")
-                          )
-                          )
-                          ),
                       
                         tabPanel(
                           "Novel Statistic",
@@ -105,8 +84,20 @@ fluidPage(theme = shinytheme("superhero"),
                             on the court and it can be predicted that they will have a more successful season than a team that has a lower novel
                             statistic.")
                           
+                        ),
+                      tabPanel(
+                        "All NBA Data",
+                        sidebarLayout(
+                          sidebarPanel(
+                            p("This data table is the raw data that we used for our analysis of teams. 
+                                Feel free to click through using the filters above or below the table to narrow you search.
+                                Slide left and right to see all the different stats tracked.")
+                          ),
+                          mainPanel(
+                            dataTableOutput("allnba")
+                          )
                         )
-                      
+                      )
                       )
             )
           

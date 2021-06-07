@@ -151,4 +151,15 @@ shinyServer(function(input, output) {
       theme(axis.text.x = element_text(angle = 75, hjust = 1))
   })
 
+## Novel Graphs
+ react_novel_14_15 <- reactive({
+    if(is.null(input$TeamNov)) {
+      novel_stat_14_15
+    } else {
+      novel_stat_14_15 %>%
+        filter(Team %in% input$TeamNov)
+    }
+  })
+  
+  
 })

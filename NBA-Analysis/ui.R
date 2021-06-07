@@ -94,7 +94,20 @@ fluidPage(theme = shinytheme("superhero"),
                             dataTableOutput("allnba")
                           )
                           )
-                          )),
+                          ),
+                      
+                        tabPanel(
+                          "Novel Statistic",
+                          h2("Looking at the Novel Statistic:"),
+                          p("This page looks at the novel statistic which is a measure of offensive and defensive effeciency combined.
+                            This statistic takes in things like field goal percentage, rebounds, and assists to give an accurate indicator
+                            of how effective each team is during a season. A higher novel statistic means that that team is more effective
+                            on the court and it can be predicted that they will have a more successful season than a team that has a lower novel
+                            statistic.")
+                          
+                        )
+                      
+                      )
             )
           
  

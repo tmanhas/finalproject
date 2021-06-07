@@ -248,7 +248,7 @@ nba_PlusMin_17_18 <- group_by(nba_PlusMin_17_18, Team) %>%
 
 ## Create the 4 plots, one for each season
 
-ggplot(nba_PlusMin_14_15) +
+novel_stat_14_15 <- ggplot(nba_PlusMin_14_15) +
   geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
   coord_flip() +
   labs(
@@ -258,7 +258,7 @@ ggplot(nba_PlusMin_14_15) +
   )
 
 
-ggplot(nba_PlusMin_15_16) +
+novel_stat_15_16 <- ggplot(nba_PlusMin_15_16) +
   geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
   coord_flip() +
   labs(
@@ -268,7 +268,7 @@ ggplot(nba_PlusMin_15_16) +
   )
 
 
-ggplot(nba_PLusMin_16_17) +
+novel_stat_16_17 <- ggplot(nba_PLusMin_16_17) +
   geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
   coord_flip() +
   labs(
@@ -278,7 +278,7 @@ ggplot(nba_PLusMin_16_17) +
   )
 
 
-ggplot(nba_PlusMin_17_18) +
+novel_stat_17_18 <- ggplot(nba_PlusMin_17_18) +
   geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
   coord_flip() +
   labs(

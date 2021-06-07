@@ -82,7 +82,22 @@ fluidPage(theme = shinytheme("superhero"),
                             This statistic takes in things like field goal percentage, rebounds, and assists to give an accurate indicator
                             of how effective each team is during a season. A higher novel statistic means that that team is more effective
                             on the court and it can be predicted that they will have a more successful season than a team that has a lower novel
-                            statistic.")
+                            statistic."),
+                           sidebarLayout(
+                            sidebarPanel(
+                              checkboxGroupInput(inputId = "TeamNov", label = "Select teams to compare",
+                                                 choices = unique(nba_PlusMin_filtered$Team))
+                              
+                            ),
+                            mainPanel(
+                              plotOutput("14_15_season")
+                              ## br(),
+                              ## plotOutput("15_16_season"),
+                              ## br(),
+                              ## plotOutput("16_17_season"),
+                              ## br(),
+                              ## plotOutput("17_18_season")
+                            ),
                           
                         ),
                       tabPanel(

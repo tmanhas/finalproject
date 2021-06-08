@@ -21,6 +21,8 @@ fluidPage(theme = shinytheme("superhero"),
           tabsetPanel(type = "tabs",
                       tabPanel("Introduction",
                                h2("Introduction"),
+                               p("
+Team Members: Ananya Mishra, Matthew Cagle, Tara Manhas and Roberto Infante"),
                                br(),
                                img(src = "nbagraphic.jpeg", height = 300, width = "auto"),
                                br(),

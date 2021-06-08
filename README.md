@@ -26,3 +26,6 @@ Our side panel consists of a check-box widget which allows you to get data by **
 
 There are 5 Tabs in our shiny app. The first being the  Introduction, followed by a tab that represents all of the defensive gameplay statistics for all teams, displayed through plots, and then a tab that represents offensive gameplay statistics, again displayed through a scatter plot. And then, we have a tab called Novel Statstic team, which summarizes all our data, and informs the user of which team played best offensively and defensively in each season over the years 2014-2018. Finally, we have a tab that contains a table with the original data that our analysis has been extracted from. This is made available for the user to see all kinds of data for each and every team, organized by dates, enabling them to see overall statistics of all the teams.
 
+## Link to Webpage
+
+Link to our website: [click here](https://tmanhas.shinyapps.io/NBA-Analysis/)

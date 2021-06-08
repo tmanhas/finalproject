@@ -136,7 +136,8 @@ fluidPage(theme = shinytheme("superhero"),
                         h2("Summary"),
                         p("We chose to work with an NBA statistics database because we think that it is a sport that can be overall predictable by looking at the team statistics from the entire season and by using descriptive statistics which helps us find a number, 
           that we call the 'novelPlusMinus' statistics. This predicts which teams are going to reach the final that year and who is the most probable to win. 
-          First we needed to do some data wrangling to allow us to manage the data properly and find the statistics that were going to contribute to create our Novel Statistic. 
+          First we needed to do some data wrangling to allow us to manage the data properly and find the statistics that were going to contribute to create our Novel Statistic. We believe that this is a very quality dataset as there is no possibility for potentially harmful bias
+          as the data is strictly statistics that are recorded from official NBA games. We don't believe that there will be any issues that will harm certain population groups as this is a very objective dataset.
           In the meantime we spent some time reading articles to understand what basketball players, coaches, and analysts had to say about all the attributes that make a great basketball team; 
           and we end up with a hypothesis that rebounding was a key part in the success of Micheal Jordan’s Bulls team, and critical for Miami to reach the finals last year. 
              Is this the only stat that matters? 
@@ -146,7 +147,8 @@ fluidPage(theme = shinytheme("superhero"),
           In the end, we got two statistic numbers, one for offensive and another defensive in which we add them together and end up with a single Novel Plus minus statistic. 
           We proved these values to see if we could predict which team won in different years from 2014 to 2018  and we got good results as we got 3 out of 4, which proved our point. And in the one that we didn’t get right, the team that was the champion came second place. 
           With this, our hypothesis of weighting rebounds makes more sense if we add them to all the statistics that happen in a basketball game. We are optimistic in saying that we can also suggest an NBA team on what type of game or players they need in order to enhance their game in relation to one of the seasons. 
-          For example, if a team has a novel statistic of 4.4 and the champions had a 5.3, we could tell analyze where the team lacked or had lapses in and what different types of features they should optimize in order to have that 5.3.
+          For example, if a team has a novel statistic of 4.4 and the champions had a 5.3, we could tell analyze where the team lacked or had lapses in and what different types of features they should optimize in order to have that 5.3. Further ideas of how to advance this project include calculating a similar statistic for
+          sports like baseball and soccer or even calculating this novel statistic for individual players instead of teams as a whole.
 ")
                       )
                       )

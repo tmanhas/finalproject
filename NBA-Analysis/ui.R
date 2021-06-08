@@ -21,6 +21,9 @@ fluidPage(theme = shinytheme("superhero"),
           tabsetPanel(type = "tabs",
                       tabPanel("Introduction",
                                h2("Introduction"),
+                               br(),
+                               img(src = "nbagraphic.jpeg", height = 300, width = "auto"),
+                               br(),
                                p("Our Data looks at the Analysis of the NBA Games between the years 
                                2014-2018, on a season basis. We have used a number of statistics to 
                                analyse the game play of each and every team at the NBA games between 

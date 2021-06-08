@@ -154,12 +154,74 @@ shinyServer(function(input, output) {
 ## Novel Graphs
  react_novel_14_15 <- reactive({
     if(is.null(input$TeamNov)) {
-      novel_stat_14_15
+      nba_PlusMin_14_15
     } else {
-      novel_stat_14_15 %>%
+      nba_PlusMin_14_15 %>%
         filter(Team %in% input$TeamNov)
     }
   })
-  
-  
+  output$season14_15 <- renderPlot({
+    ggplot(data = react_novel_14_15()) +
+      geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
+      coord_flip() +
+      labs(
+        title = "Average Novel Statistic For Each Team, 2014-2015 Season",
+        x = "Team",
+        y = "Mean Novel Statistic"
+      )
+  })
+  react_novel_15_16 <- reactive({
+    if(is.null(input$TeamNov)) {
+      nba_PlusMin_15_16
+    } else {
+      nba_PlusMin_15_16 %>%
+        filter(Team %in% input$TeamNov)
+    }
+  })
+  output$season15_16 <- renderPlot({
+    ggplot(data = react_novel_15_16()) +
+      geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
+      coord_flip() +
+      labs(
+        title = "Average Novel Statistic For Each Team, 2015-2016 Season",
+        x = "Team",
+        y = "Mean Novel Statistic"
+      )
+  })
+  react_novel_16_17 <- reactive({
+    if(is.null(input$TeamNov)) {
+      nba_PLusMin_16_17
+    } else {
+      nba_PLusMin_16_17 %>%
+        filter(Team %in% input$TeamNov)
+    }
+  })
+  output$season16_17 <- renderPlot({
+    ggplot(data = react_novel_16_17()) +
+      geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
+      coord_flip() +
+      labs(
+        title = "Average Novel Statistic For Each Team, 2016-2017 Season",
+        x = "Team",
+        y = "Mean Novel Statistic"
+      )
+  })
+  react_novel_17_18 <- reactive({
+    if(is.null(input$TeamNov)) {
+      nba_PlusMin_17_18
+    } else {
+      nba_PlusMin_17_18 %>%
+        filter(Team %in% input$TeamNov)
+    }
+  })
+  output$season17_18 <- renderPlot({
+    ggplot(data = react_novel_17_18()) +
+      geom_point(mapping = aes(x = Team, y = AvgNovelStat)) +
+      coord_flip() +
+      labs(
+        title = "Average Novel Statistic For Each Team, 2017-2018 Season",
+        x = "Team",
+        y = "Mean Novel Statistic"
+      )
+  })
 })

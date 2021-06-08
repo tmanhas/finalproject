@@ -90,16 +90,16 @@ fluidPage(theme = shinytheme("superhero"),
                               
                             ),
                             mainPanel(
-                              plotOutput("14_15_season")
-                              ## br(),
-                              ## plotOutput("15_16_season"),
-                              ## br(),
-                              ## plotOutput("16_17_season"),
-                              ## br(),
-                              ## plotOutput("17_18_season")
+                              plotOutput("season14_15"),
+                              br(),
+                              plotOutput("season15_16"),
+                              br(),
+                              plotOutput("season16_17"),
+                              br(),
+                              plotOutput("season17_18")
                             ),
                           
-                        ),
+                        )),
                       tabPanel(
                         "All NBA Data",
                         sidebarLayout(
@@ -115,5 +115,6 @@ fluidPage(theme = shinytheme("superhero"),
                       )
                       )
             )
+
           
  
